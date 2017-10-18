@@ -45,6 +45,7 @@ public class ModifiedPrimsGenerator implements MazeGenerator {
 
 	public void primsAlgorithm(Maze maze, boolean arrayOfMaze[][], List<Cell> cellArray){		
 		int random = 0;
+		boolean found = false;
 		
 		if(cellArray.size() > 0){
 			Cell nextCell = cellArray.get(0);
@@ -64,24 +65,32 @@ public class ModifiedPrimsGenerator implements MazeGenerator {
 				}
 			}
 	
+			while(found == false){
+				int rand;
+				int counter = 4;
+				Random r = new Random();
+				rand = r.nextInt(counter);
+				List<Integer> directions = new ArrayList<Integer>();
 
-			for(int i = 0; i < 6; i++){
-				if(i == 1 || 1 == 4){
-					continue;
+				directions.add(0);
+				directions.add(2);
+				directions.add(3);
+				directions.add(5);
+
+				if( (nextCell.neigh[directions.get(rand)] != null) && (arrayOfMaze[nextCell.neigh[directions.get(rand)].r][nextCell.neigh[directions.get(rand)].c] == true) ){
+
+					nextCell.wall[directions.get(rand)].present = false;	
+					arrayOfMaze[nextCell.r][nextCell.c] = true;
+					maze.map[nextCell.r][nextCell.c] = nextCell;
+					System.out.println(cellArray.size() + " 3");
+					found = true;
+					primsAlgorithm(maze, arrayOfMaze, cellArray);					
 				}
 				else{
-					if( (nextCell.neigh[i] != null) && (arrayOfMaze[nextCell.neigh[i].r][nextCell.neigh[i].c] == true) ){
-
-						nextCell.wall[i].present = false;	
-						arrayOfMaze[nextCell.r][nextCell.c] = true;
-						maze.map[nextCell.r][nextCell.c] = nextCell;
-						System.out.println(cellArray.size() + " 3");
-						i=6;
-						primsAlgorithm(maze, arrayOfMaze, cellArray);
-						
-					}
-				}
-			}	
+					counter--;
+					directions.remove(rand);
+				}	
+			}		
 		}	
 	}
 
