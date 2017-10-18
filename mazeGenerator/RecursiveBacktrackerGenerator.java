@@ -23,7 +23,7 @@ public class RecursiveBacktrackerGenerator implements MazeGenerator {
 		totalCellCount = sizeRow*sizeColumn;
 
 		isVisited = new boolean[sizeRow][sizeColumn];
-		Cell entranceCell = maze.entrance;
+		Cell entranceCell = maze.map[6][6];
 
 		depthFirtstSearch(maze, entranceCell, isVisited, stackOfVisitedCells);
 	} // end of generateMaze()
@@ -57,20 +57,6 @@ public class RecursiveBacktrackerGenerator implements MazeGenerator {
 
 					Cell nextCurrCell = currentCell.neigh[i];
 
-					/*switch(i){
-						case 0 :
-							neighborWallDirection = 3;
-						case 2 :
-							neighborWallDirection = 5;
-						case 3 :
-							neighborWallDirection = 0;
-						case 5 :
-							neighborWallDirection = 2;	
-						default :
-							System.out.println("error in RecursiveBacktrackerGenerator");
-					}*/
-
-
 					currentCell.wall[i].present = false;
 					//nextCurrCell.wall[neighborWallDirection].present = false;
 
@@ -81,6 +67,8 @@ public class RecursiveBacktrackerGenerator implements MazeGenerator {
 
 			}
 		}
+
+
 
 
 

@@ -19,6 +19,4 @@ public interface MazeGenerator
 	 */
 	public void generateMaze(Maze maze);
 
-
-	public void depthFirtstSearch(Maze maze, Cell cell, boolean arrayOfMaze[][], Queue<Cell> visitedCells);
 } // end of interface mazeGenerator
