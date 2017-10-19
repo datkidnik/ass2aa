@@ -93,33 +93,5 @@ public class ModifiedPrimsGenerator implements MazeGenerator {
 			}		
 		}	
 	}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 } // end of class ModifiedPrimsGenerator
 
