@@ -20,7 +20,7 @@ public class ModifiedPrimsGenerator implements MazeGenerator {
 		int sizeColumn = maze.sizeC;
 
 		total = sizeRow * sizeColumn;
-		
+
 		isVisited = new boolean[sizeRow][sizeColumn];
 		Cell entranceCell = maze.entrance;
 
@@ -37,6 +37,7 @@ public class ModifiedPrimsGenerator implements MazeGenerator {
 
 
 	public void primsAlgorithm(Maze maze, boolean arrayOfMaze[][], List<Cell> cellArray){		
+		
 		//list of directions of neighbors
 		List<Integer> directions = new ArrayList<Integer>();
 

@@ -45,6 +45,17 @@ public class RecursiveBacktrackerGenerator implements MazeGenerator {
 	*arrayOfMaze - array to check which cells have been visited and which have not
 	*visitedCells - a list of order of cells that have been visited
 	*
+	*
+	*
+	*
+	*
+	*
+	*
+	*
+	*
+	*
+	*
+	*
 	*/
 	public void depthFirtstSearch(Maze maze, Cell cell, boolean arrayOfMaze[][], List<Cell> visitedCells){
 		if(holder == 11){
@@ -85,15 +96,12 @@ public class RecursiveBacktrackerGenerator implements MazeGenerator {
 		
 		//CHECK IF IT HAS UNVISITED NEIGHBORS
 		for(int i = 0; i < 6; i++){
-			if(i == 1 || 1 == 4){
-				continue;
-			}
-			else{
+			
 				if( (currentCell.neigh[i] != null) && (arrayOfMaze[currentCell.neigh[i].r][currentCell.neigh[i].c] == false) ){
 					neighbors.add(i);
 					doesNeighExist = true;
 				}
-			}
+			
 		}
 		//CHOOSE NEIGHBOR IF ANY
 		if(doesNeighExist == true){
