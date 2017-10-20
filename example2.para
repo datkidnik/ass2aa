@@ -1,8 +1,8 @@
 normal
-recurBack wallFollower 
+growingTree biDirrecurBack 
 30 30
 0 2
-29 3
+29 29
 5 9 15 9
 3 7 14 8
 0 0 22 12

@@ -20,19 +20,16 @@ public class ModifiedPrimsGenerator implements MazeGenerator {
 		int sizeColumn = maze.sizeC;
 
 		total = sizeRow * sizeColumn;
+		
 		isVisited = new boolean[sizeRow][sizeColumn];
 		Cell entranceCell = maze.entrance;
 
 		isVisited[entranceCell.r][entranceCell.c] = true;
 
+		//populates cellsWithNeighbors with the neighbors around the entrance cell
 		for(int i = 0; i < 6; i++){
-			if(i == 1 || 1 == 4){
-				continue;
-			}
-			else{
-				if( (entranceCell.neigh[i] != null)){
-					cellsWithNeighbors.add(entranceCell.neigh[i]);		
-				}
+			if( (entranceCell.neigh[i] != null)){
+				cellsWithNeighbors.add(entranceCell.neigh[i]);		
 			}
 		}
 		primsAlgorithm(maze, isVisited, cellsWithNeighbors);

@@ -13,6 +13,7 @@ public class WallFollowerSolver implements MazeSolver {
 	
 	protected boolean isVisited[][];
 	protected List<Cell> stackOfVisitedCells = new ArrayList<Cell>();
+	protected int totalCellCount;
 
 	@Override
 	public void solveMaze(Maze maze) {
@@ -21,6 +22,8 @@ public class WallFollowerSolver implements MazeSolver {
 		int sizeColumn = maze.sizeC;
 		isVisited = new boolean[sizeRow][sizeColumn];
 		Cell startingCell = maze.entrance;
+
+		totalCellCount = 1;
 
         wallFollow(maze, startingCell, isVisited, stackOfVisitedCells);
 	} // end of solveMaze()
@@ -48,28 +51,26 @@ public class WallFollowerSolver implements MazeSolver {
 		}
 		else{
 			for(int i = 0; i < 6; i++){
-				if(i == 1 || 1 == 4){
-					continue;
+				
+				if((currCell.neigh[i] != null) && (currCell.wall[i].present == false) && (arrayOfMaze[currCell.neigh[i].r][currCell.neigh[i].c] == false) ){
+					//add current cell to visited neighbors
+					visitedCells.add(currCell);
+
+					//initialise next cell
+					Cell nextCell = currCell.neigh[i];
+
+					//draw path onto maze map
+					maze.drawFtPrt(currCell);
+
+					//tell function we found a neighbor
+					doesNeighExist = true;
+
+					System.out.println("new cell");
+					totalCellCount++;
+					i=6;
+					wallFollow(maze, nextCell, arrayOfMaze, visitedCells);		
 				}
-				else{
-					if((currCell.neigh[i] != null) && (currCell.wall[i].present == false) && (arrayOfMaze[currCell.neigh[i].r][currCell.neigh[i].c] == false) ){
-						//add current cell to visited neighbors
-						visitedCells.add(currCell);
-
-						//initialise next cell
-						Cell nextCell = currCell.neigh[i];
-
-						//draw path onto maze map
-						maze.drawFtPrt(currCell);
-
-						//tell function we found a neighbor
-						doesNeighExist = true;
-
-						System.out.println("new cell");
-						i=6;
-						wallFollow(maze, nextCell, arrayOfMaze, visitedCells);		
-					}
-				}
+				
 			}
 			if(doesNeighExist == false){
 				int sizeOfArray = (visitedCells.size() - 1);
@@ -93,7 +94,7 @@ public class WallFollowerSolver implements MazeSolver {
 	@Override
 	public int cellsExplored() {
 		// TODO Auto-generated method stub
-		return 0;
+		return totalCellCount;
 	} // end of cellsExplored()
 
 } // end of class WallFollowerSolver
